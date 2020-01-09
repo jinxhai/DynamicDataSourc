@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yukong.chapter5.repository.TestMapper">
+
+    <select id="selectAll1" resultType="java.util.Map">
+         select * from t_user limit 0,10
+    </select>
+
+    <select id="selectAll2"  resultType="java.util.Map">
+        select skip 0 first 10 * from t_user
+    </select>
+
+    <select id="selectAll3"  resultType="java.util.Map">
+        select * from qi_product_recommend limit 0,10
+    </select>
+
+    <select id="selectAll4"  resultType="java.util.Map">
+        <![CDATA[
+        select * from  (select a.*,ROWNUM rn from (select * from ABC)a where ROWNUM <= 10) where rn >= 0
+        ]]>
+    </select>
+
+
+</mapper>

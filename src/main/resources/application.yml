@@ -1,0 +1,39 @@
+server:
+  port: 8989
+spring:
+  datasource:
+    master:
+      url: jdbc:mysql://127.0.0.1:3306/sshtest?useUnicode=true&characterEncoding=UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+      type: com.zaxxer.hikari.HikariDataSource
+    cluster:
+    - key: informix
+      url: jdbc:informix-sqli://127.0.0.1:16001/custerquerydb:INFORMIXSERVER=dsjzy_test;newcodeset=en_us,zh_cn;newcodeset=gbk,8859-1,819;IFX_USE_STRENC=true
+      idle-timeout: 20000
+      driver-class-name: com.informix.jdbc.IfxDriver
+      username: cus
+      password: cus123
+      type: com.zaxxer.hikari.HikariDataSource
+    - key: gbase
+      url: jdbc:gbase://127.0.0.1:5258/pro_recommend?useUnicode=true&characterEncoding=utf8&failoverEnable=true&hostList=10.157.3.112,10.157.3.113,10.157.3.114,10.157.3.115&gclusterId=gc1
+      driver-class-name: com.gbase.jdbc.Driver
+      username: ecustag
+      password: Picc@1234
+    - key: oracle
+      url: jdbc:oracle:thin:@127.0.0.1:1521:dsjzy
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      username: INTERFACE_USER
+      password: INTERFACE_USER
+      type: com.zaxxer.hikari.HikariDataSource
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
+
+logging:
+  level:
+    com:
+      yukong:
+        chapter5:
+          repository: debug
